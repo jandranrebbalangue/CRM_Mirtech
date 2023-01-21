@@ -20,8 +20,7 @@ const List: React.FC = () => {
   } else if (dateFilter !== "") {
     clients = api.client.fetchClientByCreationDate.useQuery({ createdAt: dateFilter })
   } else {
-    clients = api.client.getAll.useQuery(undefined, {
-    });
+    clients = api.client.getAll.useQuery();
   }
 
   const data = clients.data;
