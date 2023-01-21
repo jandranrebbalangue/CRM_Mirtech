@@ -3,7 +3,6 @@ import {
   randCompanyName,
   randFullName,
   randNumber,
-  randRecentDate,
   randPhoneNumber,
 } from "@ngneat/falso";
 const prisma = new PrismaClient();
@@ -16,7 +15,7 @@ async function main() {
       status: "Active",
       contact: randPhoneNumber({ countryCode: "PH" }),
       organization: randCompanyName(),
-      createdAt: randRecentDate().toISOString(),
+      createdAt: new Date().toISOString(),
       assignedUser: randFullName(),
     },
   });
@@ -28,7 +27,7 @@ async function main() {
       status: "Inactive",
       contact: randPhoneNumber({ countryCode: "PH" }),
       organization: randCompanyName(),
-      createdAt: randRecentDate().toISOString(),
+      createdAt: new Date().toISOString(),
       assignedUser: randFullName(),
     },
   });
