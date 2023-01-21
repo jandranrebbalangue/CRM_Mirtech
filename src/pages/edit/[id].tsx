@@ -1,10 +1,7 @@
-import { useRouter } from 'next/router'
 import Card from "react-bootstrap/Card";
 import Back from "./../components/Back";
 import Form from "./../Form/index";
 const Edit = () => {
-  const router = useRouter()
-  const { id } = router.query
 
   return (
     <div className=" w-100">
