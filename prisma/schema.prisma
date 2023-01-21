@@ -14,7 +14,7 @@ model Clients {
     id        Int @id @default(autoincrement())
     createdAt String?
     updatedAt String?
-    contact Int
+    contact String
     organization String
     name String
     status String

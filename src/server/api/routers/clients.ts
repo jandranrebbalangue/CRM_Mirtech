@@ -8,12 +8,12 @@ const prisma = new PrismaClient();
 export const clientRouter = createTRPCRouter({
   createClient: publicProcedure.input(z.object({
     name: z.string(),
-    contact: z.number(),
+    contact: z.string(),
     organization: z.string(),
     status: z.string(),
     createdAt: z.string(),
     updatedAt: z.string(),
-    assignedUser: z.string()
+    assignedUser: z.string().nullish()
   }))
     .mutation(async ({ input }) => {
       const client: Prisma.ClientsCreateInput = {
@@ -23,7 +23,7 @@ export const clientRouter = createTRPCRouter({
         status: input.status,
         createdAt: dayjs().format("MM/DD/YYYY"),
         updatedAt: dayjs().format("MM/DD/YYYY"),
-        assignedUser: input.assignedUser
+        assignedUser: input.assignedUser || ""
       }
       const createUser = await prisma.clients.create({
         data: client
@@ -47,11 +47,11 @@ export const clientRouter = createTRPCRouter({
   updateClient: publicProcedure.input(z.object({
     id: z.number(),
     name: z.string(),
-    contact: z.number(),
+    contact: z.string(),
     organization: z.string(),
     status: z.string(),
     updatedAt: z.string(),
-    assignedUser: z.string(),
+    assignedUser: z.string().nullish()
   }))
     .mutation(async ({ input }) => {
       const { id, ...rest } = input;
@@ -61,6 +61,7 @@ export const clientRouter = createTRPCRouter({
         },
         data: {
           ...rest,
+          assignedUser: input.assignedUser || "",
           updatedAt: dayjs().format("MM/DD/YYYY")
         }
       })

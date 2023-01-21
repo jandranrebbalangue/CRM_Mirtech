@@ -46,11 +46,8 @@ const AddClientForm = (): JSX.Element => {
   const assignedUser = watch("assignedUser")
 
   const createItem = async (data: FormValues) => {
-    let { contact, assignedUser } = data;
-    const { name, organization, status } = data;
-    if (typeof contact === "string") {
-      contact = parseInt(contact, 10)
-    }
+    let { assignedUser } = data;
+    const { name, organization, status, contact } = data;
     if (!assignedUser) {
       assignedUser = ""
     } else {

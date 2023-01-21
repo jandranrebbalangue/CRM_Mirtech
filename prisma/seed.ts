@@ -14,7 +14,7 @@ async function main() {
     create: {
       name: randFullName({ gender: "female" }),
       status: "Active",
-      contact: parseInt(randPhoneNumber({ countryCode: "PH" }), 10),
+      contact: randPhoneNumber({ countryCode: "PH" }),
       organization: randCompanyName(),
       createdAt: randRecentDate().toISOString(),
       assignedUser: randFullName(),
@@ -26,7 +26,7 @@ async function main() {
     create: {
       name: randFullName({ gender: "male" }),
       status: "Inactive",
-      contact: parseInt(randPhoneNumber({ countryCode: "PH" }), 10),
+      contact: randPhoneNumber({ countryCode: "PH" }),
       organization: randCompanyName(),
       createdAt: randRecentDate().toISOString(),
       assignedUser: randFullName(),
