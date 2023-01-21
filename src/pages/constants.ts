@@ -9,7 +9,7 @@ export interface ClientsProps {
   createdAt?: string,
 }
 
-export const USER_KEY = "CLIENT_USER"
+export const CLIENTS_KEY = "CLIENTS"
 
 export const STATUS_OPTIONS = [
   { value: "Active", label: "Active" },

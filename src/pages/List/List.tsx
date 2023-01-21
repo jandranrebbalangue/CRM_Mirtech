@@ -9,6 +9,7 @@ import Link from "next/link";
 import Item from "./Item";
 import Spinner from "../components/Spinner";
 import Filters from "../components/Filter";
+import { CLIENTS_KEY } from "../constants";
 
 const List: React.FC = () => {
   const [showFilters, setShowFilters] = useState(false);
@@ -25,6 +26,9 @@ const List: React.FC = () => {
 
   const data = clients.data;
   const { isFetching } = clients
+  if (data?.length) {
+    localStorage.setItem(CLIENTS_KEY, JSON.stringify(data))
+  }
   const router = useRouter();
   let body;
 
