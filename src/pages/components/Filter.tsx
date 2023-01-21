@@ -51,6 +51,7 @@ const Filters: React.FC<StatusFilterProps> = ({ setStatusFilter, setDateFilter }
                   options={STATUS_OPTIONS}
                   isClearable={true}
                   value={status}
+                  placeholder="Select status"
                 />
               </Col>
               <Col>
