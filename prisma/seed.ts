@@ -4,6 +4,7 @@ import {
   randFullName,
   randNumber,
   randRecentDate,
+  randPhoneNumber,
 } from "@ngneat/falso";
 const prisma = new PrismaClient();
 async function main() {
@@ -13,7 +14,7 @@ async function main() {
     create: {
       name: randFullName({ gender: "female" }),
       status: "Active",
-      contact: randNumber({ max: 11 }),
+      contact: parseInt(randPhoneNumber({ countryCode: "PH" }), 10),
       organization: randCompanyName(),
       createdAt: randRecentDate().toISOString(),
       assignedUser: randFullName(),
@@ -24,8 +25,8 @@ async function main() {
     update: {},
     create: {
       name: randFullName({ gender: "male" }),
-      status: "Active",
-      contact: randNumber({ max: 11 }),
+      status: "Inactive",
+      contact: parseInt(randPhoneNumber({ countryCode: "PH" }), 10),
       organization: randCompanyName(),
       createdAt: randRecentDate().toISOString(),
       assignedUser: randFullName(),
