@@ -94,4 +94,27 @@ export const clientRouter = createTRPCRouter({
       })
       return filterClients;
     }),
+  fetchClientByCreationDateAndStatus: publicProcedure.input(z.object({
+    status: z.string(),
+    createdAt: z.string(),
+  }))
+    .query(async ({ input }) => {
+      const filterClients = await prisma.clients.findMany({
+        where: {
+          AND: [
+            {
+              status: {
+                equals: input.status
+              }
+            },
+            {
+              createdAt: {
+                equals: input.createdAt
+              }
+            },
+          ],
+        }
+      })
+      return filterClients;
+    }),
 });

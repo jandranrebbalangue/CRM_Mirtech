@@ -11,7 +11,7 @@ import dayjs from "dayjs";
 
 
 interface StatusFilterProps {
-  setStatusFilter: (value: string) => void;
+  setStatusFilter: (value: string | undefined) => void;
   setDateFilter: (value: string) => void;
 }
 
@@ -25,7 +25,7 @@ const Filters: React.FC<StatusFilterProps> = ({ setStatusFilter, setDateFilter }
     if (status !== "") {
       setStatusFilter(status)
     } else {
-      setStatusFilter("")
+      setStatusFilter(undefined)
     }
     if (createdBy !== null) {
       const formatDate = dayjs(createdBy).format("MM/DD/YYYY")

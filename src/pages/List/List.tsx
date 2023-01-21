@@ -13,13 +13,15 @@ import { CLIENTS_KEY } from "../constants";
 
 const List: React.FC = () => {
   const [showFilters, setShowFilters] = useState(false);
-  const [statusFilter, setStatusFilter] = useState<string>("");
+  const [statusFilter, setStatusFilter] = useState<string | undefined>("");
   const [dateFilter, setDateFilter] = useState<string>("");
   let clients;
-  if (statusFilter) {
-    clients = api.client.fetchClientByStatus.useQuery({ status: statusFilter });
+  if (statusFilter !== undefined && dateFilter !== "") {
+    clients = api.client.fetchClientByCreationDateAndStatus.useQuery({ status: statusFilter, createdAt: dateFilter })
   } else if (dateFilter !== "") {
     clients = api.client.fetchClientByCreationDate.useQuery({ createdAt: dateFilter })
+  } else if (statusFilter) {
+    clients = api.client.fetchClientByStatus.useQuery({ status: statusFilter });
   } else {
     clients = api.client.getAll.useQuery();
   }
