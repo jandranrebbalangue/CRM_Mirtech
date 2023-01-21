@@ -127,13 +127,16 @@ const AddClientForm = (): JSX.Element => {
             <Select id="assignedUser" label="Assigned User"
               horizontal={true}
               options={assignedUserOptions || []}
-              value={assignedUser} />
+              value={assignedUser}
+              placeholder="Select assigned user"
+            />
             <Select
               id="status"
               label="Status"
               options={STATUS_OPTIONS}
               horizontal={true}
               value={status}
+              placeholder="Select status"
             />
           </Col>
         </Row>
