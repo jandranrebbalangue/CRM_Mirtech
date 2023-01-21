@@ -57,7 +57,7 @@ const View = () => {
               <Col>
                 <ul className="list-unstyled">
                   <li>
-                    {/* Assigned user: <strong>{readMutation.data.assignedUser}</strong> */}
+                    Assigned user: <strong>{readMutation.data?.assignedUser}</strong>
                   </li>
                 </ul>
               </Col>

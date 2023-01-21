@@ -29,7 +29,9 @@ const AddClientForm = (): JSX.Element => {
   const { id } = router.query;
   const clientId = parseInt(id as string, 10);
   const createMutation = api.client.createClient.useMutation();
-  const readMutation = id ? api.client.getClientDetailsById.useQuery({ id: clientId }) : undefined;
+  const readMutation = api.client.getClientDetailsById.useQuery({ id: clientId }, {
+    enabled: !!clientId
+  });
   const updateMutation = api.client.updateClient.useMutation();
   const assignedUserOptions = id ? api.client.getAll.useQuery().data?.filter((item) => item.id !== clientId).map((item) => ({
     label: item.name,
@@ -98,7 +100,7 @@ const AddClientForm = (): JSX.Element => {
     };
   }, [readMutation?.data, readMutation?.isFetched, reset]);
 
-  if (createMutation.isLoading || readMutation?.isLoading) return <Spinner />;
+  if (createMutation.isLoading) return <Spinner />;
 
   return (
     <FormProvider {...methods}>
