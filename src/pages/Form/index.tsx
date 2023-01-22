@@ -26,15 +26,15 @@ interface FormValues {
 
 const AddClientForm = (): JSX.Element => {
   const router = useRouter();
-  const { id } = router.query;
-  const clientId = parseInt(id as string, 10);
+  const { id } = router.query
+  const clientId = id as string
   const createMutation = api.client.createClient.useMutation();
   const readMutation = api.client.getClientDetailsById.useQuery({ id: clientId }, {
     enabled: !!clientId
   });
 
   const updateMutation = api.client.updateClient.useMutation();
-  const assignedUserOptions = id ? api.client.getAll.useQuery().data?.filter((item) => item.id !== clientId).map((item) => ({
+  const assignedUserOptions = id ? api.client.getAll.useQuery().data?.filter((item) => item.id !== id).map((item) => ({
     label: item.name,
     value: item.name
   })) : api.client.getAll.useQuery().data?.map((item) => ({
@@ -70,7 +70,7 @@ const AddClientForm = (): JSX.Element => {
     }
     const updatedAt = dayjs().toISOString();
     await updateMutation.mutateAsync({
-      name, contact, organization, status: status, id: clientId, updatedAt, assignedUser
+      name, contact, organization, status, id: clientId, updatedAt, assignedUser
     })
     await router.push("/")
   };

@@ -12,7 +12,7 @@ import Avatar from "../components/Avatar";
 const View = () => {
   const router = useRouter();
   const { id } = router.query;
-  const clientId = parseInt(id as string, 10);
+  const clientId = id as string
   const readMutation = api.client.getClientDetailsById.useQuery({ id: clientId })
   return (
     <div className="w-100">

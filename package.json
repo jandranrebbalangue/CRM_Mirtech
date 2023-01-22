@@ -11,7 +11,8 @@
     "postinstall": "prisma generate",
     "lint": "next lint",
     "start": "next start",
-    "seed": "concurrently \"cd prisma && yarn\" \"yarn prisma db seed\""
+    "seed": "concurrently \"cd prisma && yarn\" \"yarn prisma db seed\"",
+    "db": "./scripts/start.sh"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",

@@ -34,7 +34,7 @@ export const clientRouter = createTRPCRouter({
     return ctx.prisma.clients.findMany();
   }),
   getClientDetailsById: publicProcedure.input(z.object({
-    id: z.number(),
+    id: z.string(),
   }))
     .query(async ({ input }) => {
       const currentData = await prisma.clients.findFirst({
@@ -45,7 +45,7 @@ export const clientRouter = createTRPCRouter({
       return currentData;
     }),
   updateClient: publicProcedure.input(z.object({
-    id: z.number(),
+    id: z.string(),
     name: z.string(),
     contact: z.string(),
     organization: z.string(),

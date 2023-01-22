@@ -6,10 +6,12 @@ import {
   randPhoneNumber,
 } from "@ngneat/falso";
 import dayjs from "dayjs";
+import { ObjectId } from "bson";
 const prisma = new PrismaClient();
 async function main() {
+  const id = new ObjectId().toString();
   const alice = await prisma.clients.upsert({
-    where: { id: randNumber({ min: 1, max: 1000 }) },
+    where: { id },
     update: {},
     create: {
       name: randFullName({ gender: "female" }),
@@ -21,7 +23,7 @@ async function main() {
     },
   });
   const bob = await prisma.clients.upsert({
-    where: { id: randNumber({ min: 1, max: 1000 }) },
+    where: { id },
     update: {},
     create: {
       name: randFullName({ gender: "male" }),
