@@ -32,7 +32,7 @@ const AddClientForm = (): JSX.Element => {
   const readMutation = api.client.getClientDetailsById.useQuery({ id: clientId }, {
     enabled: !!clientId
   });
-  console.log(readMutation.data)
+
   const updateMutation = api.client.updateClient.useMutation();
   const assignedUserOptions = id ? api.client.getAll.useQuery().data?.filter((item) => item.id !== clientId).map((item) => ({
     label: item.name,
