@@ -99,6 +99,7 @@ const AddClientForm = (): JSX.Element => {
     <FormProvider {...methods}>
       <Form onSubmit={handleSubmit(onSubmit)}>
         {createMutation.error && <p>Something went wrong! {createMutation.error.message}</p>}
+        {updateMutation.error && <p>Something went wrong! {updateMutation.error.message}</p>}
         <Row>
           <Col>
             <Input
