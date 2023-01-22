@@ -18,7 +18,7 @@ const List: React.FC = () => {
   let clients;
   if (statusFilter !== undefined && dateFilter !== "") {
     clients = api.client.fetchClientByCreationDateAndStatus.useQuery({ status: statusFilter, createdAt: dateFilter })
-  } else if (dateFilter !== "") {
+  } else if (dateFilter !== "" && dateFilter !== undefined) {
     clients = api.client.fetchClientByCreationDate.useQuery({ createdAt: dateFilter })
   } else if (statusFilter) {
     clients = api.client.fetchClientByStatus.useQuery({ status: statusFilter });

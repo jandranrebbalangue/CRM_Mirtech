@@ -27,7 +27,7 @@ const Filters: React.FC<StatusFilterProps> = ({ setStatusFilter, setDateFilter }
     } else {
       setStatusFilter(undefined)
     }
-    if (createdBy !== null) {
+    if (createdBy !== null && createdBy !== "" && createdBy !== undefined) {
       const formatDate = dayjs(createdBy).format("MM/DD/YYYY")
       setDateFilter(formatDate)
     } else {
