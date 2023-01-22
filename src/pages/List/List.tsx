@@ -26,8 +26,7 @@ const List: React.FC = () => {
     clients = api.client.getAll.useQuery();
   }
 
-  const data = clients.data;
-  const { isFetching } = clients
+  const { data, isFetching } = clients
   if (data?.length) {
     localStorage.setItem(CLIENTS_KEY, JSON.stringify(data))
   }
