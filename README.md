@@ -23,4 +23,10 @@ This is an technical assesment for mirtech
    yarn run dev
    ```
 
+5. To generate seed data run
+
+   ```bash
+   yarn run seed
+   ```
+
    You can access now the application through http://localhost:3000/
