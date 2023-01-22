@@ -1,10 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import {
-  randCompanyName,
-  randFullName,
-  randNumber,
-  randPhoneNumber,
-} from "@ngneat/falso";
+import { randCompanyName, randFullName, randPhoneNumber } from "@ngneat/falso";
 import dayjs from "dayjs";
 import { ObjectId } from "bson";
 const prisma = new PrismaClient();

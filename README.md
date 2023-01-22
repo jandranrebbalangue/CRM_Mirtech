@@ -21,7 +21,7 @@ This is an technical assesment for mirtech
    yarn run db
    ```
 
-4. Create .env and put this inside .env `MONGO_URL=mongodb://root:password@localhost:27017/crm-local?authSource=admin`
+4. Create .env and put this inside .env `DATABASE_URL=mongodb://root:password@localhost:27017/crm-local?authSource=admin`
 
 5. Start app
 

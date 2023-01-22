@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = env("MONGO_URL")
+  url      = env("DATABASE_URL")
 }
 
 model Clients {
@@ -15,5 +15,5 @@ model Clients {
   name         String
   organization String
   status       String
-  updatedAt    String
-}
+  updatedAt DateTime @updatedAt
+  }
