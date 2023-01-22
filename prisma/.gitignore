@@ -1,4 +1,7 @@
 # dependencies
 /node_modules
 
+# database
+/prisma/db.sqlite
+/prisma/db.sqlite-journal
 
