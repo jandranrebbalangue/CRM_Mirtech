@@ -1,8 +1,8 @@
 import Card from "react-bootstrap/Card";
 import Back from "./../components/Back";
 import Form from "./../Form/index";
-const Edit = () => {
 
+const Edit = () => {
   return (
     <div className=" w-100">
       <div className="mb-4">
