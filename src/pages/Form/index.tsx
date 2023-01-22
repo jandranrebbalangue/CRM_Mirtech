@@ -55,8 +55,7 @@ const AddClientForm = (): JSX.Element => {
       assignedUser = data.assignedUser
     }
     const createdAt = dayjs().format("MM/DD/YYYY")
-    const updatedAt = dayjs().format("MM/DD/YYYY")
-    await createMutation.mutateAsync({ name, contact, organization, status, createdAt, updatedAt, assignedUser })
+    await createMutation.mutateAsync({ name, contact, organization, status, createdAt, assignedUser })
     await router.push("/")
   };
 
@@ -68,9 +67,8 @@ const AddClientForm = (): JSX.Element => {
     } else {
       assignedUser = data.assignedUser
     }
-    const updatedAt = dayjs().toISOString();
     await updateMutation.mutateAsync({
-      name, contact, organization, status, id: clientId, updatedAt, assignedUser
+      name, contact, organization, status, id: clientId, assignedUser
     })
     await router.push("/")
   };

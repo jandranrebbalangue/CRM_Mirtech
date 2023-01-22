@@ -12,7 +12,6 @@ export const clientRouter = createTRPCRouter({
     organization: z.string(),
     status: z.string(),
     createdAt: z.string(),
-    updatedAt: z.string(),
     assignedUser: z.string().nullish()
   }))
     .mutation(async ({ input }) => {
@@ -22,7 +21,6 @@ export const clientRouter = createTRPCRouter({
         organization: input.organization,
         status: input.status,
         createdAt: dayjs().format("MM/DD/YYYY"),
-        updatedAt: dayjs().format("MM/DD/YYYY"),
         assignedUser: input.assignedUser || ""
       }
       const createUser = await prisma.clients.create({
@@ -50,7 +48,6 @@ export const clientRouter = createTRPCRouter({
     contact: z.string(),
     organization: z.string(),
     status: z.string(),
-    updatedAt: z.string(),
     assignedUser: z.string().nullish()
   }))
     .mutation(async ({ input }) => {
@@ -62,7 +59,6 @@ export const clientRouter = createTRPCRouter({
         data: {
           ...rest,
           assignedUser: input.assignedUser || "",
-          updatedAt: dayjs().format("MM/DD/YYYY")
         }
       })
       return {
