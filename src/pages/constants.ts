@@ -1,7 +1,7 @@
 export interface ClientsProps {
   id: number,
   name: string,
-  contact: number,
+  contact: string,
   avatar?: string,
   organization: string,
   assignedUser?: string,
