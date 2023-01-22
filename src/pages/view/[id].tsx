@@ -50,7 +50,7 @@ const View = () => {
                     Organization: <strong>{readMutation.data?.organization}</strong>
                   </li>
                   <li>
-                    Creation Date: <strong>{dayjs(readMutation.data?.createdAt).format("MM/DD/YYYY")}</strong>
+                    Creation Date: <strong>{dayjs(readMutation.data?.createdAt).format("MMMM DD YYYY")}</strong>
                   </li>
                 </ul>
               </Col>
