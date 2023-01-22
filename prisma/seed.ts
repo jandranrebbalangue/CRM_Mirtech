@@ -5,6 +5,7 @@ import {
   randNumber,
   randPhoneNumber,
 } from "@ngneat/falso";
+import dayjs from "dayjs";
 const prisma = new PrismaClient();
 async function main() {
   const alice = await prisma.clients.upsert({
@@ -15,7 +16,7 @@ async function main() {
       status: "Active",
       contact: randPhoneNumber({ countryCode: "PH" }),
       organization: randCompanyName(),
-      createdAt: new Date().toISOString(),
+      createdAt: dayjs().format("MM/DD/YYYY"),
       assignedUser: randFullName(),
     },
   });
@@ -27,7 +28,7 @@ async function main() {
       status: "Inactive",
       contact: randPhoneNumber({ countryCode: "PH" }),
       organization: randCompanyName(),
-      createdAt: new Date().toISOString(),
+      createdAt: dayjs().format("MM/DD/YYYY"),
       assignedUser: randFullName(),
     },
   });
