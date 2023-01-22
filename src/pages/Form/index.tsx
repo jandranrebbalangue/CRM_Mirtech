@@ -16,7 +16,7 @@ import dayjs from "dayjs";
 
 interface FormValues {
   name: string;
-  contact: number;
+  contact: string;
   avatar: string;
   organization: string;
   assignedUser: string;
@@ -60,11 +60,8 @@ const AddClientForm = (): JSX.Element => {
   };
 
   const updateItem = async (data: FormValues) => {
-    let { contact, assignedUser } = data;
-    const { name, organization, status } = data;
-    if (typeof contact === "string") {
-      contact = parseInt(contact, 10)
-    }
+    let { assignedUser } = data;
+    const { name, organization, status, contact } = data;
     if (!assignedUser) {
       assignedUser = ""
     } else {
