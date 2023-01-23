@@ -35,6 +35,6 @@ This is an technical assesment for mirtech
    yarn run seed
    ```
 
-7. To access mongodb gui through http://localhost:4321/
+7. You can access mongodb gui through http://localhost:4321/
 
    You can access now the application through http://localhost:3000/
