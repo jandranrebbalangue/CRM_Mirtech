@@ -1,5 +1,5 @@
 {
-  "name": "my-project",
+  "name": "prisma seed",
   "version": "1.0.0",
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
