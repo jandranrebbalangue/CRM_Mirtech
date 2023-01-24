@@ -9,6 +9,11 @@ export interface ClientsProps {
   createdAt?: string,
 }
 
+export interface SelectOptionsProps {
+  label: string,
+  value: string,
+}
+
 export const CLIENTS_KEY = "CLIENTS"
 
 export const STATUS_OPTIONS = [

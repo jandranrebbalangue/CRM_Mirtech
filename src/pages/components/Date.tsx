@@ -16,9 +16,10 @@ interface DateFilterProps {
   required?: boolean,
   groupClass?: string,
   help?: string
+  callback: (d: Date | null) => void
 }
 
-const Date: React.FC<DateFilterProps> = ({ id, label, name, value, horizontal, required, help }) => {
+const Date: React.FC<DateFilterProps> = ({ id, label, name, value, horizontal, required, help, callback }) => {
 
   const {
     control,
@@ -42,6 +43,7 @@ const Date: React.FC<DateFilterProps> = ({ id, label, name, value, horizontal, r
             <ReactDatePicker
               onChange={(d) => {
                 field.onChange(d);
+                callback(d)
               }}
               // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
               selected={field.value}

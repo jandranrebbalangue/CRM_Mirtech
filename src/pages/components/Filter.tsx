@@ -1,39 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import { useForm, FormProvider } from "react-hook-form";
+import type { SelectOptionsProps } from "../constants";
 import { STATUS_OPTIONS } from "../constants";
 import Select from "./Select";
 import Date from "./Date";
-import dayjs from "dayjs";
 
 
 interface StatusFilterProps {
-  setStatusFilter: (value: string | undefined) => void;
-  setDateFilter: (value: string) => void;
+  onSelectStatus: (value: SelectOptionsProps | null) => void
+  onSelectDate: (value: Date | null) => void
 }
 
-const Filters: React.FC<StatusFilterProps> = ({ setStatusFilter, setDateFilter }): JSX.Element => {
+const Filters: React.FC<StatusFilterProps> = ({ onSelectStatus, onSelectDate }): JSX.Element => {
   const methods = useForm();
   const { watch } = methods;
   const status = watch("status") as string
-  const createdBy = watch("createdAt") as string
+  const createdAt = watch("createdAt") as string
 
-  useEffect(() => {
-    if (status !== "") {
-      setStatusFilter(status)
-    } else {
-      setStatusFilter(undefined)
-    }
-    if (createdBy !== null && createdBy !== "" && createdBy !== undefined) {
-      const formatDate = dayjs(createdBy).format("MM/DD/YYYY")
-      setDateFilter(formatDate)
-    } else {
-      setDateFilter("")
-    }
-  }, [createdBy, setDateFilter, setStatusFilter, status])
 
   return (
     <FormProvider {...methods}>
@@ -52,10 +39,11 @@ const Filters: React.FC<StatusFilterProps> = ({ setStatusFilter, setDateFilter }
                   isClearable={true}
                   value={status}
                   placeholder="Select status"
+                  callback={onSelectStatus}
                 />
               </Col>
               <Col>
-                <Date id="createdAt" label="Created By" name="createdBy" value={createdBy} />
+                <Date id="createdAt" label="Created At" name="createdAt" value={createdAt} callback={onSelectDate} />
               </Col>
             </Row>
           </Form>

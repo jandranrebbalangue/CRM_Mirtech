@@ -5,25 +5,41 @@ import { faFilter, faPlus } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { api } from "../../utils/api";
 import { useRouter } from "next/router";
+import dayjs from "dayjs"
 import Link from "next/link";
 import Item from "./Item";
 import Spinner from "../components/Spinner";
 import Filters from "../components/Filter";
+import type { SelectOptionsProps } from "../constants";
 import { CLIENTS_KEY } from "../constants";
 
 const List: React.FC = () => {
   const [showFilters, setShowFilters] = useState(false);
-  const [statusFilter, setStatusFilter] = useState<string | undefined>("");
-  const [dateFilter, setDateFilter] = useState<string>("");
+  const [statusFilter, setStatusFilter] = useState<string | undefined>(undefined);
+  const [dateFilter, setDateFilter] = useState<string | undefined>(undefined);
   let clients;
-  if (statusFilter !== undefined && dateFilter !== "") {
+  if (statusFilter !== undefined && dateFilter !== undefined) {
     clients = api.client.fetchClientByCreationDateAndStatus.useQuery({ status: statusFilter, createdAt: dateFilter })
-  } else if (dateFilter !== "" && dateFilter !== undefined) {
+  } else if (dateFilter !== undefined) {
     clients = api.client.fetchClientByCreationDate.useQuery({ createdAt: dateFilter })
-  } else if (statusFilter) {
+  } else if (statusFilter !== undefined) {
     clients = api.client.fetchClientByStatus.useQuery({ status: statusFilter });
   } else {
     clients = api.client.getAll.useQuery();
+  }
+  const onSelectDate = (date: Date | null) => {
+    if (date === null) {
+      setDateFilter(undefined)
+    } else {
+      setDateFilter(dayjs(date).format("MM/DD/YYYY"))
+    }
+  }
+  const onSelectStatus = (data: SelectOptionsProps | null) => {
+    if (data?.value === null) {
+      setStatusFilter(undefined)
+    } else {
+      setStatusFilter(data?.value)
+    }
   }
 
   const { data, isFetching } = clients
@@ -92,7 +108,7 @@ const List: React.FC = () => {
             </Button>
           </div>
         </div>
-        {showFilters && <Filters setStatusFilter={setStatusFilter} setDateFilter={setDateFilter} />}
+        {showFilters && <Filters onSelectStatus={onSelectStatus} onSelectDate={onSelectDate} />}
         {body}
       </div>
     </>

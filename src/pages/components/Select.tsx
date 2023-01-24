@@ -5,11 +5,7 @@ import Col from "react-bootstrap/Col";
 import { useFormContext, Controller } from "react-hook-form";
 import type { SingleValue } from "react-select";
 import ReactSelect, { NonceProvider } from "react-select";
-
-export interface SelectOptionsProps {
-  label: string,
-  value: string,
-}
+import type { SelectOptionsProps } from "../constants"
 
 
 interface SelectProps {
@@ -24,7 +20,7 @@ interface SelectProps {
   loading?: boolean,
   isDisabled?: boolean,
   isClearable?: boolean,
-  callback?: (e: SingleValue<SelectOptionsProps>) => void,
+  callback: (e: SingleValue<SelectOptionsProps>) => void,
   placeholder?: string
 }
 const Select: React.FC<SelectProps> = ({
