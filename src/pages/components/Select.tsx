@@ -20,7 +20,7 @@ interface SelectProps {
   loading?: boolean,
   isDisabled?: boolean,
   isClearable?: boolean,
-  callback: (e: SingleValue<SelectOptionsProps>) => void,
+  callback?: (e: SingleValue<SelectOptionsProps>) => void,
   placeholder?: string
 }
 const Select: React.FC<SelectProps> = ({
