@@ -21,7 +21,7 @@ describe("CRUD operations", () => {
   const caller = appRouter.createCaller({ prisma });
 
   testData.forEach((item) => {
-    it("should create item", async () => {
+    it(`should create ${item.name}`, async () => {
       const result = await caller.client.createClient(item);
       expect(result.name).toEqual(item.name)
       expect(result.status).toEqual(item.status)
@@ -31,6 +31,12 @@ describe("CRUD operations", () => {
 
       items.push({ ...result })
     })
+  })
+
+  it("should list items", async () => {
+    const caller = appRouter.createCaller({ prisma });
+    const result = await caller.client.getAll();
+    expect(result).toHaveLength(items.length)
   })
 
   it("should read item", async () => {
@@ -77,4 +83,5 @@ describe("CRUD operations", () => {
     expect(res).toBe(null)
 
   })
+
 })
