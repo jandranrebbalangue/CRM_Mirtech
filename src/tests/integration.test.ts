@@ -47,17 +47,17 @@ describe("CRUD operations", () => {
   it("should update item", async () => {
     type Input = inferProcedureInput<AppRouter["client"]["updateClient"]>
     const item = items[1];
-    const clientId = item?.id as string
+    const id = item?.id as string
     const caller = appRouter.createCaller({ prisma });
     const input: Input = {
-      id: clientId,
+      id,
       name: "Test name update",
       status: item?.status as string,
       organization: "Test organization update",
       contact: item?.contact as string,
     }
     const result = await caller.client.updateClient({
-      id: clientId, name: input.name, contact: input?.contact,
+      id, name: input.name, contact: input?.contact,
       status: input.status,
       organization: input.organization,
     })
