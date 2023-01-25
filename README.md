@@ -15,7 +15,7 @@ This is an technical assesment for mirtech
    yarn
    ```
 
-3. Install and run mongodb  through docker
+3. Install and run mongodb through docker
 
    ```bash
    yarn run db
@@ -36,5 +36,11 @@ This is an technical assesment for mirtech
    ```
 
 7. You can access mongodb GUI through http://localhost:4321/
+
+8. Run test
+
+   ```bash
+   yarn run test
+   ```
 
    You can access now the application through http://localhost:3000/
