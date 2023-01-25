@@ -15,7 +15,7 @@ This is an technical assesment for mirtech
    yarn
    ```
 
-3. Install mongodb through docker
+3. Install and run mongodb  through docker
 
    ```bash
    yarn run db
