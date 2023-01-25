@@ -114,4 +114,14 @@ export const clientRouter = createTRPCRouter({
       })
       return filterClients;
     }),
+  deleteById: publicProcedure.input(z.object({
+    id: z.string(),
+  }))
+    .query(async ({ input }) => {
+      await prisma.clients.delete({
+        where: {
+          id: input.id
+        }
+      })
+    }),
 });
