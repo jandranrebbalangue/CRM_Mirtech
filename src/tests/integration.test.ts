@@ -21,7 +21,6 @@ describe("CRUD operations", () => {
   const caller = appRouter.createCaller({ prisma });
 
   testData.forEach((item) => {
-
     it("should create item", async () => {
       const result = await caller.client.createClient(item);
       expect(result.name).toEqual(item.name)
@@ -34,7 +33,6 @@ describe("CRUD operations", () => {
     })
   })
 
-
   it("should read item", async () => {
     const item = items[0];
     const id = item?.id as string
@@ -44,7 +42,6 @@ describe("CRUD operations", () => {
     expect(result?.status).toBe(item?.status)
     expect(result?.contact).toBe(item?.contact)
     expect(result?.organization).toBe(item?.organization)
-
   })
 
   it("should update item", async () => {
