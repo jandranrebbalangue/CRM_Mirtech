@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import List from "./List/List";
+import List from "./List";
 
 const Home: NextPage = () => {
   return (
